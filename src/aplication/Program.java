@@ -3,17 +3,31 @@ package aplication;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
+import model.services.DaoFactory;
 
 public class Program {
 
 	public static void main(String[] args) {
-		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
-		Department dep = new Department(1, "Computacao");
-		Seller sel = new Seller(1, "Joao", "joaoavilaperasol@hotmail.com", LocalDate.parse("08/03/2001", fmt), 4350.00, dep);
-		System.out.println(sel);
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		SellerDao sellerDao = DaoFactory.createSellerDao();
+		
+		/*Seller newSeller = new Seller("Roberval Rocha", "robervalrocha@hotmail.com", LocalDate.parse("07/11/1975", fmt), 7845.33, new Department(3, "ADM"));
+		int id = sellerDao.insert(newSeller);
+		System.out.println("Inserido com sucesso!");*/
+		
+		sellerDao.deleteById(13);
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 

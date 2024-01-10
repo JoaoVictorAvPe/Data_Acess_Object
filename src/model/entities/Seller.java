@@ -10,8 +10,6 @@ public class Seller {
 	private Double baseSalary;
 	private Department department;
 	
-	public Seller() {
-	}
 	
 	public Seller(Integer id, String name, String email, LocalDate birthDate, Double baseSalary, Department dep) {
 		this.id = id;
@@ -21,7 +19,14 @@ public class Seller {
 		this.baseSalary = baseSalary;
 		this.department = dep;
 	}
+	
+	public Seller(String name, String email, LocalDate birthDate, Double baseSalary, Department dep) {
+		this(null, name, email, birthDate, baseSalary, dep);
+	}
 
+	public Seller() {
+	}
+	
 	public Integer getId() {
 		return id;
 	}
