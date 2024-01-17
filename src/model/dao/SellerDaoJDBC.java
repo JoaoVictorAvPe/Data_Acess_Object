@@ -56,12 +56,7 @@ public class SellerDaoJDBC implements SellerDao {
 		} catch (SQLException e) {
 			throw new DBException(e.getMessage());
 		} finally {
-			try {
-				conn.close();
-				queryStatement.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			DB.closeStatement(queryStatement);
 		}
 
 	}
@@ -89,12 +84,7 @@ public class SellerDaoJDBC implements SellerDao {
 		} catch (SQLException e) {
 			throw new DBException(e.getMessage());
 		} finally {
-			try {
-				queryStatement.close();
-				conn.close();
-			} catch (SQLException e) {
-				throw new DBException(e.getMessage());
-			}
+			DB.closeStatement(queryStatement);
 		}
 	}
 
@@ -111,11 +101,7 @@ public class SellerDaoJDBC implements SellerDao {
 		} catch (SQLException e) {
 			throw new DBException(e.getMessage());
 		} finally {
-			try {
-				queryStatement.close();
-			} catch (SQLException e) {
-				throw new DBException(e.getMessage());
-			}
+			DB.closeStatement(queryStatement);
 		}
 	}
 
@@ -139,12 +125,8 @@ public class SellerDaoJDBC implements SellerDao {
 		} catch (SQLException e) {
 			throw new DBException(e.getMessage());
 		} finally {
-			try {
-				queryStatement.close();
-				result.close();
-			} catch (SQLException e) {
-				throw new DBException(e.getMessage());
-			}
+			DB.closeResultSet(result);
+			DB.closeStatement(queryStatement);
 		}
 	}
 
@@ -194,13 +176,8 @@ public class SellerDaoJDBC implements SellerDao {
 		} catch (SQLException e) {
 			throw new DBException(e.getMessage());
 		} finally {
-			try {
-				result.close();
-				queryStatement.close();
-				conn.close();
-			} catch (SQLException e) {
-				throw new DBException(e.getMessage());
-			}
+			DB.closeResultSet(result);
+			DB.closeStatement(queryStatement);
 		}
 
 	}
